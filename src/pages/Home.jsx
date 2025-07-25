@@ -26,13 +26,16 @@ import publicTenderIcon from '../assets/appel-offres.png';
 import externalProjectIcon from '../assets/external-project.png';
 import partnerIcon from '../assets/partner.png';
 
+import { Link } from 'react-router-dom'; 
+
 
 const Home = () => {
   return (
     <div className="bg-white text-gray-800">
 
+      
       {/* SECTION HÉRO */}
-       <section className="flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-20 bg-white">
+      <section className="flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-20 bg-white">
         <div className="max-w-xl mb-10 md:mb-0">
           <div className="h-2 w-40 bg-orange-300 rounded-full mb-6"></div>
           <h1 className="text-4xl font-bold mb-4 leading-tight">
@@ -42,24 +45,25 @@ const Home = () => {
             Solutions numériques, systèmes d'information et énergie IT<br />
             pour les entreprises et institutions.
           </p>
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full shadow-md">
+          <Link
+            to="/solutions"
+            className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full shadow-md inline-block"
+          >
             Découvrir nos services →
-          </button>
+          </Link>
         </div>
-        <div className="md:w-1/2 mb-10 md:mb-0">
+        <div className="md:w-1/2 mb-10 md:mb-0 flex justify-center">
           <img
             src={heroImage}
             alt="Présentation de la mission de DWESTA"
-            className="w-full h-auto rounded-xl shadow-md object-cover"
+            className="w-100 h-100 rounded-full shadow-md object-cover"
           />
         </div>
       </section>
 
-       {/* SECTION DOMAINES D’EXPERTISE */}
+      {/* SECTION DOMAINES D’EXPERTISE */}
       <section className="px-6 md:px-16 py-20 bg-[#F9F8FF] text-center">
-        <p className="text-orange-400 uppercase text-sm font-medium mb-2">➤ NOS OFFRES</p>
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">Nos domaines d’expertise.</h2>
-
+        {/* ... */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-left">
           {[
             {
@@ -87,20 +91,29 @@ const Home = () => {
               <div className="text-3xl mb-4">🧩</div>
               <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
               <p className="text-gray-600 text-sm mb-4">{item.desc}</p>
-              <a href="#" className="text-orange-500 font-medium text-sm hover:underline">
-                Plus de détails→
-              </a>
+              <Link
+                to="/solutions"
+                className="text-orange-500 font-medium text-sm hover:underline"
+              >
+                Plus de détails →
+              </Link>
             </div>
           ))}
         </div>
 
         <div className="flex justify-center gap-4">
-          <button className="bg-orange-500 text-white px-6 py-3 rounded-full shadow hover:bg-orange-600">
+          <Link
+            to="/solutions"
+            className="bg-orange-500 text-white px-6 py-3 rounded-full shadow hover:bg-orange-600 inline-block"
+          >
             Explorer maintenant →
-          </button>
-          <button className="text-orange-600 border border-orange-600 px-6 py-3 rounded-full hover:bg-orange-100">
+          </Link>
+          <Link
+            to="/contact"
+            className="text-orange-600 border border-orange-600 px-6 py-3 rounded-full hover:bg-orange-100 inline-block"
+          >
             Contactez-nous
-          </button>
+          </Link>
         </div>
       </section>
 
