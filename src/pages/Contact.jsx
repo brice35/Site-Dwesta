@@ -1,7 +1,47 @@
-import React from 'react';
-import { FaWhatsapp, FaInstagram, FaFacebookMessenger } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { supabase } from '../supabaseClient'; // Assure-toi que ce chemin est correct
+import { FaWhatsapp, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    nom: '',
+    telephone: '',
+    email: '',
+    societe: '',
+    message: '',
+  });
+
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { nom, telephone, email, societe, message } = formData;
+
+    const { error } = await supabase.from('messages').insert([
+      { nom, telephone, email, societe, message },
+    ]);
+
+    if (error) {
+      setError("Erreur lors de l’envoi du message.");
+      setSuccess(false);
+    } else {
+      setSuccess(true);
+      setError(null);
+      setFormData({
+        nom: '',
+        telephone: '',
+        email: '',
+        societe: '',
+        message: '',
+      });
+    }
+  };
+
   return (
     <div className="bg-[#fff3e6] px-6 py-16">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
@@ -10,35 +50,50 @@ export default function Contact() {
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
         {/* Formulaire de contact */}
-        <form className="bg-white rounded-lg shadow-md p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-md p-6 space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
+              name="nom"
               type="text"
               placeholder="Nom *"
+              value={formData.nom}
+              onChange={handleChange}
               className="border border-gray-300 p-2 rounded"
               required
             />
             <input
+              name="telephone"
               type="text"
               placeholder="Téléphone *"
+              value={formData.telephone}
+              onChange={handleChange}
               className="border border-gray-300 p-2 rounded"
               required
             />
             <input
+              name="email"
               type="email"
               placeholder="Email *"
+              value={formData.email}
+              onChange={handleChange}
               className="border border-gray-300 p-2 rounded"
               required
             />
             <input
+              name="societe"
               type="text"
               placeholder="Société"
+              value={formData.societe}
+              onChange={handleChange}
               className="border border-gray-300 p-2 rounded"
             />
           </div>
           <textarea
+            name="message"
             placeholder="Message..."
             rows="4"
+            value={formData.message}
+            onChange={handleChange}
             className="w-full border border-gray-300 p-2 rounded"
             required
           ></textarea>
@@ -48,6 +103,8 @@ export default function Contact() {
           >
             Envoyer →
           </button>
+          {success && <p className="text-green-600 font-medium">Message envoyé avec succès ✅</p>}
+          {error && <p className="text-red-600 font-medium">{error}</p>}
         </form>
 
         {/* Infos de contact */}
@@ -55,38 +112,27 @@ export default function Contact() {
           <div>
             <h3 className="font-bold text-lg">Discutez avec nous</h3>
             <p className="text-sm text-gray-600 mb-2">Nous sommes disponibles 24/7</p>
-            <ul className="flex gap-6 text-2xl text-purple-700">
+            <ul className="flex gap-6 text-2xl text-blue-400">
               <li>
                 <a
-                  href="https://wa.me/23674019849"
+                  href="https://www.facebook.com/dwesta"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="WhatsApp"
-                  className="hover:text-green-600 transition"
-                >
-                  <FaWhatsapp />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/dwesta_officiel"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="hover:text-pink-500 transition"
-                >
-                  <FaInstagram />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://m.me/dwesta"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Messenger"
+                  aria-label="Facebook"
                   className="hover:text-blue-500 transition"
                 >
-                  <FaFacebookMessenger />
+                  <FaFacebookF />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/dwesta"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="hover:text-blue-500 transition"
+                >
+                  <FaLinkedinIn />
                 </a>
               </li>
             </ul>
@@ -109,7 +155,7 @@ export default function Contact() {
       {/* Carte */}
       <div className="mt-16 border-t-2 border-purple-500 pt-10">
         <img
-          src="/map.png"
+          src="/map-1.png"
           alt="Carte"
           className="w-full h-auto object-cover rounded-md shadow"
         />

@@ -27,6 +27,13 @@ import externalProjectIcon from '../assets/external-project.png';
 import partnerIcon from '../assets/partner.png';
 
 import { Link } from 'react-router-dom'; 
+import printPreviewIcon from "../assets/écran.png";
+import trackingIcon from "../assets/voiture.png";
+import conseilIcon from "../assets/localisation.png";
+import codeIcon from "../assets/code.png";
+import devIcon from "../assets/ampoule.png";
+
+
 
 
 const Home = () => {
@@ -64,42 +71,75 @@ const Home = () => {
       {/* SECTION DOMAINES D’EXPERTISE */}
       <section className="px-6 md:px-16 py-20 bg-[#F9F8FF] text-center">
         {/* ... */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-left">
-          {[
-            {
-              title: "Solutions IT et Infogérance",
-              desc: "Maintenance, gestion de serveurs, virtualisation, sécurité informatique et cloud pour les entreprises."
-            },
-            {
-              title: "Tracking et gestion de flotte",
-              desc: "Géolocalisation de véhicules, suivi en temps réel, alertes et reporting personnalisés pour vos flottes."
-            },
-            {
-              title: "Conseil & Appels d’offres",
-              desc: "Accompagnement technique et rédaction de dossiers pour les marchés publics ou privés."
-            },
-            {
-              title: "Systèmes d’Information Géographique (SIG)",
-              desc: "Cartographie interactive, analyse spatiale, intégration de données géolocalisées pour projets urbains et ruraux."
-            },
-            {
-              title: "Développement web et mobile",
-              desc: "Sites vitrines, applications métiers, plateformes e-commerce et SaaS sur mesure."
-            },
-          ].map((item, idx) => (
-            <div key={idx} className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all">
-              <div className="text-3xl mb-4">🧩</div>
-              <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-              <p className="text-gray-600 text-sm mb-4">{item.desc}</p>
-              <Link
-                to="/solutions"
-                className="text-orange-500 font-medium text-sm hover:underline"
-              >
-                Plus de détails →
-              </Link>
-            </div>
-          ))}
+         <p className="text-orange-400 uppercase text-sm font-medium mb-2">✦ Nos offres</p>
+        <h2 className="text-3xl font-bold mb-4">Nos domaines d'expertise.</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 text-left">
+  <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all">
+        <img src={printPreviewIcon} alt="IT et infogérance" className="w-12 h-12" />
+        <div>
+          <h3 className="font-semibold text-lg">Solutions IT et Infogérance</h3>
+          <p className="text-gray-600 text-sm mb-2">
+            Maintenance, gestion de serveurs, virtualisation, sécurité informatique et cloud pour les entreprises.
+          </p>
+          <Link to="/solutions" className="text-orange-500 font-medium text-sm hover:underline">
+            Plus de détails →
+          </Link>
         </div>
+      </div>
+
+      <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all">
+        <img src={trackingIcon} alt="Tracking flotte" className="w-12 h-12" />
+        <div>
+          <h3 className="font-semibold text-lg">Tracking et gestion de flotte</h3>
+          <p className="text-gray-600 text-sm mb-2">
+            Géolocalisation de véhicules, suivi en temps réel, alertes et reporting personnalisés pour vos flottes.
+          </p>
+          <Link to="/solutions" className="text-orange-500 font-medium text-sm hover:underline">
+            Plus de détails →
+          </Link>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all">
+        <img src={conseilIcon} alt="Conseil" className="w-12 h-12" />
+        <div>
+          <h3 className="font-semibold text-lg">Conseil & Appels d’offres</h3>
+          <p className="text-gray-600 text-sm mb-2">
+            Accompagnement technique et rédaction de dossiers pour les marchés publics ou privés.
+          </p>
+          <Link to="/solutions" className="text-orange-500 font-medium text-sm hover:underline">
+            Plus de détails →
+          </Link>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all">
+        <img src={codeIcon} alt="SIG" className="w-12 h-12" />
+        <div>
+          <h3 className="font-semibold text-lg">Systèmes d’Information Géographique (SIG)</h3>
+          <p className="text-gray-600 text-sm mb-2">
+            Cartographie interactive, analyse spatiale, intégration de données géolocalisées pour projets urbains et ruraux.
+          </p>
+          <Link to="/solutions" className="text-orange-500 font-medium text-sm hover:underline">
+            Plus de détails →
+          </Link>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all">
+        <img src={devIcon} alt="Développement web" className="w-12 h-12" />
+        <div>
+          <h3 className="font-semibold text-lg">Développement web et mobile</h3>
+          <p className="text-gray-600 text-sm mb-2">
+            Sites vitrines, applications métiers, plateformes e-commerce et SaaS sur mesure.
+          </p>
+          <Link to="/solutions" className="text-orange-500 font-medium text-sm hover:underline">
+            Plus de détails →
+          </Link>
+        </div>
+      </div>
+
+    </div>
 
         <div className="flex justify-center gap-4">
           <Link

@@ -75,10 +75,10 @@ const NosSolutions = () => {
           <h3 className="text-2xl font-bold mb-4">Nos solutions IT <span className="text-[#6b21a8]">professionnelles</span></h3>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h4 className="text-lg font-semibold mb-2 ">Infogérance Impression</h4>
+              <h4 className="text-lg font-semibold mb-2 ">Infogérance Imprimante</h4>
               <ul className="space-y-1 ">
                 <li><CheckCircle className="inline mr-2 text-green-500" />Maintenance 24h/24 — SLA garantis</li>
-                <li><CheckCircle className="inline mr-2 text-green-500" />Logiciel éducatif (PaperCut NG) et suivi d’usage</li>
+                <li><CheckCircle className="inline mr-2 text-green-500" />Logiciel de contrôle et de gestion d'impressions</li>
                 <li><CheckCircle className="inline mr-2 text-green-500" />Gestion des consommables et pièces</li>
                 <li><CheckCircle className="inline mr-2 text-green-500" />Assistance 5j/7 et support utilisateurs</li>
               </ul>
@@ -170,16 +170,7 @@ const NosSolutions = () => {
                 <li><CheckCircle className="inline mr-2 text-green-500" />Reporting global de l’état du parc</li>
                 <li><CheckCircle className="inline mr-2 text-green-500" />Solution déployable en 30 jours</li>
               </ul>
-              <button className="mt-4  text-black font-semibold py-1 px-3 rounded inline-flex items-center">
-                <a
-                  href="/docs/fichier-it.pdf" // Remplace ce chemin par le vrai fichier
-                   download
-                  className="mt-4 inline-block bg-yellow-400 text-black font-semibold py-1 px-3 rounded hover:bg-yellow-500 transition duration-200"
-                  >
-                 Télécharger le fichier <span className="ml-2">📁</span>
-                </a>
 
-              </button>
             </div>
 
             <div className="bg-white rounded-2xl shadow-lg p-6">
@@ -190,16 +181,7 @@ const NosSolutions = () => {
                 <li><CheckCircle className="inline mr-2 text-green-500" />Vue globale pour anticiper les extensions</li>
                 <li><CheckCircle className="inline mr-2 text-green-500" />Rapports pour direction et audits</li>
               </ul>
-              <button className="mt-4  text-black font-semibold py-1 px-3 rounded inline-flex items-center">
-                <a
-                  href="/docs/fichier-it.pdf" // Remplace ce chemin par le vrai fichier
-                   download
-                  className="mt-4 inline-block bg-yellow-400 text-black font-semibold py-1 px-3 rounded hover:bg-yellow-500 transition duration-200"
-                  >
-                 Télécharger le fichier <span className="ml-2">📁</span>
-                </a>
 
-              </button>
             </div>
 
             <div className="md:col-span-2 bg-white rounded-2xl shadow-lg p-6">
@@ -210,16 +192,7 @@ const NosSolutions = () => {
                 <li><CheckCircle className="inline mr-2 text-green-500" />Intégration et maintenance avec formation</li>
                 <li><CheckCircle className="inline mr-2 text-green-500" />Des services selon besoin complet</li>
               </ul>
-              <button className="mt-4  text-black font-semibold py-1 px-3 rounded inline-flex items-center">
-                <a
-                  href="/docs/fichier-it.pdf" // Remplace ce chemin par le vrai fichier
-                   download
-                  className="mt-4 inline-block bg-yellow-400 text-black font-semibold py-1 px-3 rounded hover:bg-yellow-500 transition duration-200"
-                  >
-                 Télécharger le fichier <span className="ml-2">📁</span>
-                </a>
 
-              </button>
             </div>
           </div>
           {/* Bloc 8 - Tracking et gestion de flotte */}
@@ -265,13 +238,7 @@ const NosSolutions = () => {
         <li><CheckCircle className="inline mr-2 text-green-500" />Idéal en zones bien couvertes par les réseaux cellulaires</li>
         <li><CheckCircle className="inline mr-2 text-green-500" />Affichage dynamique sur carte interactive</li>
       </ul>
-      <a
-        href="/docs/tracking.pdf"
-        download
-        className="mt-4 inline-block bg-yellow-400 text-black font-semibold py-1 px-3 rounded hover:bg-yellow-500 transition duration-200"
-      >
-        Télécharger le fichier <span className="ml-2">📁</span>
-      </a>
+
     </div>
 
     <div className="md:col-span-2 bg-white rounded-2xl shadow-lg p-6">
@@ -284,6 +251,15 @@ const NosSolutions = () => {
     </div>
   </div>
 </div>
+<div className="md:col-span-2 rounded-2xl p-6 m-0 text-center">
+        <a
+        href="/docs/tracking.pdf"
+        download
+        className="mt-4 inline-block bg-yellow-400 text-black font-semibold py-1 px-3 rounded hover:bg-yellow-500 transition duration-200"
+      >
+        Télécharger le fichier <span className="ml-2">📁</span>
+      </a>
+        </div>
 
 {/* Bloc 9 - Conseil et appels d'offres */}
 <div className=" rounded-2xl p-6 md:col-span-2">

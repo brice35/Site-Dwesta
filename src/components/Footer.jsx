@@ -1,4 +1,4 @@
-import { FaWhatsapp, FaInstagram, FaFacebookMessenger } from "react-icons/fa";
+import { FaWhatsapp, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -16,34 +16,25 @@ export default function Footer() {
 
       {/* Icônes sociales avec liens */}
       <div className="flex justify-center gap-6 mb-4 text-white text-xl">
-        <a
-          href="https://wa.me/2362401940" // Numéro WhatsApp
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="WhatsApp"
-          className="hover:text-green-500 transition"
-        >
-          <FaWhatsapp />
-        </a>
 
         <a
-          href="https://www.instagram.com/dwesta_officiel" // Lien Instagram
+          href="https://www.facebook.com/dwesta"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Instagram"
-          className="hover:text-pink-500 transition"
-        >
-          <FaInstagram />
-        </a>
-
-        <a
-          href="https://m.me/dwesta" // Page Messenger (nom de page Facebook)
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Messenger"
+          aria-label="Facebook"
           className="hover:text-blue-500 transition"
         >
-          <FaFacebookMessenger />
+          <FaFacebookF />
+        </a>
+
+        <a
+          href="https://www.linkedin.com/company/dwesta"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          className="hover:text-blue-300 transition"
+        >
+          <FaLinkedinIn />
         </a>
       </div>
 
