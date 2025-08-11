@@ -61,56 +61,7 @@ export default function Navbar() {
 
         {/* Desktop navigation */}
         <ul className="hidden md:flex top-center gap-6 font-medium items-center relative">
-          {/* Loupe et barre de recherche */}
-          <li className="relative">
-            <button
-              onClick={() => setShowSearch((prev) => !prev)}
-              className="text-xl hover:scale-110 transition-transform duration-300"
-            >
-              <FaSearch />
-            </button>
-
-            <div
-              className={`absolute right-10 top-[-12px] transition-all duration-500 ease-in-out ${
-                showSearch
-                  ? "opacity-100 w-56 px-4 py-2"
-                  : "opacity-0 w-0 p-0 overflow-hidden"
-              } bg-white rounded-full shadow-md flex flex-col z-40`}
-            >
-              <input
-                type="text"
-                className="w-full text-sm outline-none"
-                placeholder="Rechercher..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                autoFocus={showSearch}
-              />
-              {searchTerm && (
-                <ul className="text-sm mt-1">
-                  {filteredSuggestions.length > 0 ? (
-                    filteredSuggestions.map((item, i) => (
-                      <li
-                        key={i}
-                        className="px-2 py-1 hover:bg-gray-100 cursor-pointer rounded"
-                        onClick={() => {
-                          navigate(item.path);
-                          setShowSearch(false);
-                          setSearchTerm("");
-                        }}
-                      >
-                        {item.name}
-                      </li>
-                    ))
-                  ) : (
-                    <li className="italic text-gray-500 px-2">
-                      Aucune correspondance
-                    </li>
-                  )}
-                </ul>
-              )}
-            </div>
-          </li>
+          
 
           {/* Liens standard */}
           {suggestions.map((item, i) => (
