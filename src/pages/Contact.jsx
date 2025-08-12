@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { supabase } from '../supabaseClient'; // Assure-toi que ce chemin est correct
+import { supabase } from '../supabaseClient';
 import { FaWhatsapp, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
+    objet: '',
+    prenom: '',
     nom: '',
     telephone: '',
     email: '',
@@ -20,10 +22,10 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { nom, telephone, email, societe, message } = formData;
+    const { objet, prenom, nom, telephone, email, societe, message } = formData;
 
     const { error } = await supabase.from('messages').insert([
-      { nom, telephone, email, societe, message },
+      { objet, prenom, nom, telephone, email, societe, message },
     ]);
 
     if (error) {
@@ -33,6 +35,8 @@ export default function Contact() {
       setSuccess(true);
       setError(null);
       setFormData({
+        objet: '',
+        prenom: '',
         nom: '',
         telephone: '',
         email: '',
@@ -51,7 +55,11 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
         {/* Formulaire de contact */}
         <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-md p-6 space-y-4">
+          
+          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+             {/* Nom */}
             <input
               name="nom"
               type="text"
@@ -61,15 +69,19 @@ export default function Contact() {
               className="border border-gray-300 p-2 rounded"
               required
             />
+            {/* Prénom */}
             <input
-              name="telephone"
+              name="prenom"
               type="text"
-              placeholder="Téléphone *"
-              value={formData.telephone}
+              placeholder="Prénom *"
+              value={formData.prenom}
               onChange={handleChange}
               className="border border-gray-300 p-2 rounded"
               required
             />
+
+           
+             {/* Email */}
             <input
               name="email"
               type="email"
@@ -79,15 +91,42 @@ export default function Contact() {
               className="border border-gray-300 p-2 rounded"
               required
             />
+
+            {/* Téléphone */}
+            <input
+              name="telephone"
+              type="text"
+              placeholder="Téléphone *"
+              value={formData.telephone}
+              onChange={handleChange}
+              className="border border-gray-300 p-2 rounded "
+              required
+            />
+
+           
+
+            {/* Société */}
             <input
               name="societe"
               type="text"
               placeholder="Société"
               value={formData.societe}
               onChange={handleChange}
-              className="border border-gray-300 p-2 rounded"
+              className="border border-gray-300 p-2 rounded "
             />
           </div>
+          {/* Objet */}
+          <input
+            name="objet"
+            type="text"
+            placeholder="Objet *"
+            value={formData.objet}
+            onChange={handleChange}
+            className="border border-gray-300 p-2 rounded w-full"
+            required
+          />
+
+          {/* Message */}
           <textarea
             name="message"
             placeholder="Message..."
@@ -97,12 +136,16 @@ export default function Contact() {
             className="w-full border border-gray-300 p-2 rounded"
             required
           ></textarea>
+
+          {/* Bouton */}
           <button
             type="submit"
             className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition"
           >
             Envoyer →
           </button>
+
+          {/* Messages d'état */}
           {success && <p className="text-green-600 font-medium">Message envoyé avec succès ✅</p>}
           {error && <p className="text-red-600 font-medium">{error}</p>}
         </form>
@@ -119,7 +162,7 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="hover:text-blue-500 transition"
+                  className="hover:text-blue-600 transition"
                 >
                   <FaFacebookF />
                 </a>
@@ -133,6 +176,17 @@ export default function Contact() {
                   className="hover:text-blue-500 transition"
                 >
                   <FaLinkedinIn />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.whatsapp.com/dwesta"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Whatsapp"
+                  className="hover:text-green-300 transition"
+                >
+                  <FaWhatsapp />
                 </a>
               </li>
             </ul>

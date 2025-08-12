@@ -201,7 +201,7 @@ const Home = () => {
 
         <div className="flex flex-wrap justify-center gap-8">
         {[
-          { name: "Davesne Yaya", role: "CEO", image: davesne },
+          { name: "Davesne Yaya", role: "CEO", image: davesne ,},
           { name: "Abdoulaye Ngalewa", role: "COO", image: abdoulaye }
         ].map((person, index) => (
         <div key={index} className="bg-gray-50 p-4 rounded-xl shadow hover:shadow-lg transition w-72">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+// import { supabase } from "../supabaseClient"; // Connexion désactivée
 
 const suggestions = [
   { name: "Accueil", path: "/" },
@@ -13,9 +13,10 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  /* Connexion désactivée
   useEffect(() => {
     const checkUser = async () => {
       const {
@@ -27,11 +28,12 @@ export default function Navbar() {
     checkUser();
 
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null); // Mise à jour immédiate de l'état user
+      setUser(session?.user ?? null);
     });
 
     return () => listener.subscription.unsubscribe();
   }, []);
+  */
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
@@ -54,32 +56,34 @@ export default function Navbar() {
   return (
     <nav className="bg-orange-500 text-black px-6 py-4 shadow-md relative z-50">
       <div className="flex items-center justify-between relative">
+        {/* Logo */}
         <NavLink to="/" className="flex items-center gap-2">
           <img src="/dwesta.png" alt="Logo" className="w-8 h-8" />
           <span className="font-bold text-lg">Dwesta</span>
         </NavLink>
 
         {/* Desktop navigation */}
-        <ul className="hidden md:flex top-center gap-6 font-medium items-center relative">
-          
-
-          {/* Liens standard */}
+        <ul className="hidden md:flex gap-8 font-medium items-center relative">
           {suggestions.map((item, i) => (
-            <li key={i}>
+            <li key={i} className="relative group">
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  `hover:text-white hover:underline ${
-                    isActive ? "font-bold" : ""
-                  }`
+                  `text-lg transition-colors duration-300 ${
+                    isActive ? "text-white font-bold" : "text-black"
+                  } group-hover:text-white`
                 }
               >
                 {item.name}
+                <span
+                  className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"
+                ></span>
               </NavLink>
             </li>
           ))}
 
-          {/* Connexion / Mon compte */}
+          {/*
+          Connexion / Mon compte (désactivé)
           <li>
             {user ? (
               <NavLink
@@ -97,6 +101,7 @@ export default function Navbar() {
               </NavLink>
             )}
           </li>
+          */}
         </ul>
 
         {/* Menu mobile */}
@@ -107,7 +112,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu déroulant */}
+      {/* Mobile menu */}
       <div
         className={`md:hidden transition-all duration-500 overflow-hidden ${
           isOpen ? "max-h-screen opacity-100 mt-4" : "max-h-0 opacity-0"
@@ -115,16 +120,22 @@ export default function Navbar() {
       >
         <ul className="space-y-4 font-medium">
           {suggestions.map((item, i) => (
-            <li key={i}>
+            <li key={i} className="relative group">
               <NavLink
                 to={item.path}
                 onClick={closeMenu}
-                className="block hover:underline"
+                className="block text-lg transition-colors duration-300 group-hover:text-white"
               >
                 {item.name}
+                <span
+                  className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"
+                ></span>
               </NavLink>
             </li>
           ))}
+
+          {/*
+          Connexion / Mon compte mobile (désactivé)
           <li>
             {user ? (
               <NavLink
@@ -144,6 +155,7 @@ export default function Navbar() {
               </NavLink>
             )}
           </li>
+          */}
         </ul>
       </div>
     </nav>

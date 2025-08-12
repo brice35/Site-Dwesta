@@ -36,6 +36,15 @@ export default function Footer() {
         >
           <FaLinkedinIn />
         </a>
+        <a
+          href="https://www.whatsapp.com/dwesta"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Whatsapp"
+          className="hover:text-green-300 transition"
+        >
+          <FaWhatsapp />
+        </a>
       </div>
 
       <p>Copyright © 2025 All rights reserved - Skill Flex</p>
